@@ -1,21 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { Content, Slider } from './components/Chitietphim/chitietphim';
+import Chitietphim from './components/Chitietphim/chitietphim';
 
 function App() {
-  const mockMovie = {
-    poster: 'movie-poster.jpg',
-    img: 'movie-image.jpg',
-    name: 'Movie Title',
-    time: '120 mins',
-    rating: '8.5',
-    description: 'This is a description of the movie.',
-  };
-  
   return (
     <Router>
-      <div>
+      <div className='mx-auto max-w-screen-2xl'>
         <header>
           <Navbar />
         </header>
@@ -23,11 +14,10 @@ function App() {
         <main>
           <Routes>
             <Route
-              path="/chitietphim"
+              path="/"
               element={
                 <div>
-                  <Slider movie={mockMovie} />
-                  <Content movie={mockMovie} />
+                  <Chitietphim />
                 </div>
               }
             />
