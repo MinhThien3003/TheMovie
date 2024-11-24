@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import '../assets/icon/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.min.css'
+import logo from '../assets/img/logo.png'
 
 const Navbar: React.FC = () => {
     const [searchActive, setSearchActive] = useState<boolean>(false);
@@ -11,44 +12,47 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="bg-primary relative py-1 duration-200">
-            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <div className="flex items-center">
-                        <a href="#" className="font-bold text-2xl sm:text-3xl flex gap-2">
-                            <img src="" alt="Báo Cenima" className="w-[50px]"/>
-                            Báo Cinema
-                        </a>
-                    </div>
-                    <div className="container flex items-center w-full justify-between">
-                        <div className={`gap-3 flex items-center transition-opacity duration-300 ${searchActive ? 'opacity-0' : 'opacity-100'}`}>
-                            <a href="#" className="font-bold text-xl sm:text-2xl cursor-pointer hover:text-white">PHIM</a>
-                            <a href="#" className="font-bold text-xl sm:text-2xl cursor-pointer hover:text-white">RẠP CHIẾU</a>
-                            <a href="#" className="font-bold text-xl sm:text-2xl cursor-pointer hover:text-white">THÀNH VIÊN</a>
-                            <a href="#" className="font-bold text-xl sm:text-2xl cursor-pointer hover:text-white">SỰ KIỆN</a>
-                            {searchActive ? null : (
-                                <MagnifyingGlassIcon 
-                                onClick={handleSearchClick}
-                                className="text-white bg-black w-[40px] h-[40px] rounded-full cursor-pointer"
-                                />
-                            )};
-                        </div>
-                        <input
-                            type="text"
-                            placeholder="Tìm kiếm..."
-                            onFocus={handleSearchClick}
-                            onBlur={handleInputBlur}
-                            className={`absolute left-0 right-0 mx-auto transition-all duration-300 rounded-full border border-gray-300 px-2 py-1 bg-primary ${searchActive ? 'opacity-100 w-[500px]' : 'opacity-0 w-0'}`}
-                            style={{color: searchActive ? 'black' : ''}}
-                        />
-                    </div>
-                    <div>
-                        <a onClick={() => {}} className="font-medium text-xl sm:text-2xl cursor-pointer hover:text-white">Đăng nhập/Đăng ký</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    );
+        <header className="flex justify-around bg-primary rounded-xl h-16 m-4">
+          <a href="">
+            <img src={logo} alt="Logo" className="h-4/5 mt-2 ml-8 " />
+          </a>
+          <ul className="flex py-3.5 px-5 border-x-black border-x-2 border-dashed">
+            <li className="list-none leading-10">
+              <a href="" className="text-black text-xl font-bold uppercase opacity-70 px-10 ">
+                Phim
+              </a>
+            </li>
+            <li className="list-none leading-10">
+              <a href="" className="text-black text-xl font-bold uppercase opacity-70 px-10">
+                Rạp Phim
+              </a>
+            </li>
+            <li className="list-none leading-10">
+              <a href="" className="text-black text-xl font-bold uppercase opacity-70 px-10">
+                Thành Viên
+              </a>
+            </li>
+            <li className="list-none leading-10">
+              <a href="" className="text-black text-xl font-bold uppercase opacity-70 px-10">
+                Sự Kiện / Khuyến Mãi
+              </a>
+            </li>
+            <li className="list-none leading-10 pr-6">
+              <a href="" className="bg-black rounded-full px-3 py-2.5">
+                <i className="fa-solid fa-magnifying-glass text-white" />
+              </a>
+            </li>
+          </ul>
+          {/**Login */}
+          <div className="flex items-center bg-primary rounded-xl text-xl font-bold opacity-70">
+            <a href="" className="p-2 border-r-2 border-black ">
+              Đăng Nhập
+              <i className="fa-regular fa-user px-4" />
+            </a>
+            <i className="fa-solid fa-ticket px-4" />
+          </div>
+        </header>
+      );
 };
 
 export default Navbar;
