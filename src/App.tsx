@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import Chitietphim from './components/Chitietphim/chitietphim';
+import Banners from './components/Home/Banners';
+// import Chitietphim from './components/Chitietphim/chitietphim';
 
 function App() {
   return (
@@ -13,14 +14,25 @@ function App() {
         
         <main>
           <Routes>
-            <Route
+            {/* <Route
               path="/"
               element={
                 <div>
                   <Chitietphim />
                 </div>
               }
-            />
+            /> */
+            }
+            {
+              <Route
+              path='/'
+              element={
+                <div>
+                  <Banners />
+                </div>
+              }
+              />
+            }
           </Routes>
         </main>
         
