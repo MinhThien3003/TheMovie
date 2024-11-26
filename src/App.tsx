@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Banners from './components/Home/Banners';
+import MovieList from './components/Home/MovieList';
 // import Chitietphim from './components/Chitietphim/chitietphim';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
               element={
                 <div>
                   <Banners />
+                  <MovieList/>
                 </div>
               }
               />
