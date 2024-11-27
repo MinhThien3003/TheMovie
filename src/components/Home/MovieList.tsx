@@ -43,13 +43,21 @@ const MovieList: React.FC = () => {
             {movies.slice(0, 8).map((movie) => (
                 <div
                     key={movie.id}
-                    className="relative bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden cursor-pointer"
+                    className="relative bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden group"
                 >
                     <img
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt={movie.title}
-                        className="w-full h-[330px] object-cover hover:blur-sm"
+                        className="w-full h-[330px] object-cover transition duration-300 ease-in-out group-hover:blur-sm"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
+                        <button className="px-4 py-2 m-2 bg-red-600 text-white font-semibold rounded-lg shadow-lg hover:bg-red-500">
+                        Mua Vé
+                        </button>
+                        <button className="px-4 py-2 m-2 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-500">
+                        Trailer
+                        </button>
+                    </div>
                     <div className="mt-4 flex justify-end">
                         <div className="absolute bottom-4 right-4 bg-primary text-white text-sm px-2 py-1 rounded-md flex items-center">
                             <span className="mr-1 text-lg">★</span>
