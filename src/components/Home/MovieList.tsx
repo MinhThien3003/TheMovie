@@ -3,7 +3,6 @@ import axios from 'axios';
 import { VITE_API_KEY, VITE_BASE_URL } from '../../configs/constants';
 import { Link } from 'react-router-dom';
 
-
 interface Movie{
     id: number;
     title: string;
@@ -44,7 +43,8 @@ const MovieList: React.FC = () => {
                 <div
                     key={movie.id}
                     className="relative bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden group"
-                >
+                    >
+                    <Link key={movie.id} to={`/chitietphim/${movie.id}`}>  {/* Tạo liên kết với ctp bằng id */}
                     <img
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt={movie.title}
@@ -58,6 +58,7 @@ const MovieList: React.FC = () => {
                         Trailer
                         </button>
                     </div>
+                    </Link>
                     <div className="mt-4 flex justify-end">
                         <div className="absolute bottom-4 right-4 bg-primary text-white text-sm px-2 py-1 rounded-md flex items-center">
                             <span className="mr-1 text-lg">★</span>

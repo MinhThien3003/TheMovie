@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Banners from './components/Home/Banners';
 import MovieList from './components/Home/MovieList';
 import MovieUpcoming from './components/Home/MovieList-Upcoming';
-// import Chitietphim from './components/Chitietphim/chitietphim';
+import Chitietphim from './components/Chitietphim/chitietphim';
 
 function App() {
   // console.log("ENV TEST: ", import.meta.env.VITE_API_KEY)
@@ -18,19 +18,7 @@ function App() {
         
         <main>
           <Routes>
-            {/* <Route
-              path="/"
-              element={
-                <div>
-                  <Chitietphim />
-                </div>
-              }
-            /> */
-            }
-            {
-              <Route
-              path='/'
-              element={
+            <Route path='/' element={
                 <div>
                   <Banners />
                   <MovieList/>
@@ -38,7 +26,7 @@ function App() {
                 </div>
               }
               />
-            }
+            <Route path="/chitietphim/:id" element={<Chitietphim />} />
           </Routes>
         </main>
         
