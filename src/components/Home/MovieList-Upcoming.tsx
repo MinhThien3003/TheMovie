@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { VITE_API_KEY, VITE_BASE_URL } from '../../configs/constants';
-import { Link } from 'react-router-dom';
 
 
 interface Movie_Upcoming{
@@ -10,14 +9,17 @@ interface Movie_Upcoming{
     poster_path: string;
     original_language: string;
     original_title: string;
-    overview: string;
-    popularity: number;
     release_date: string;
-    vote_average: number;
-    vote_count: number;
 }
+
+interface Video{
+    key: string;
+    type: string;
+}
+
 const MovieUpcoming: React.FC = () => {
     const [movies, setMovies] = useState<Movie_Upcoming[]>([]);
+    const [trailerKey, setTrailerKey] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -36,6 +38,20 @@ const MovieUpcoming: React.FC = () => {
         };
         fetchMovies();
     }, []);
+
+    const fetchTrailer = async (movie_id: number) => {
+        try {
+            const response = await axios.get(`${VITE_BASE_URL}/movie/${movie_id}/videos?api_key=${VITE_API_KEY}`);
+            const videos: Video[] = response.data.results;
+            const trailer = videos.find(video => video.type === 'Trailer');
+            if (trailer) {
+                setTrailerKey(trailer.key);
+            } 
+        } catch (error){
+            console.error('Error fetching trailer', error);
+        }
+    };
+
   return (
     <div className="p-6">
         <h2 className=" text-black text-3xl font-bold text-center mb-8">|Phim Sắp Chiếu|</h2>
@@ -51,7 +67,9 @@ const MovieUpcoming: React.FC = () => {
                         className="w-full h-[330px] object-cover transition duration-300 ease-in-out group-hover:blur-sm"
                     />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-                        <button className="px-4 py-2 m-2 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-500">
+                        <button className="px-4 py-2 m-2 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-500"
+                                onClick={() => fetchTrailer(movie.id)}
+                        >
                         Trailer
                         </button>
                     </div>
@@ -67,13 +85,26 @@ const MovieUpcoming: React.FC = () => {
                 </div>
             ))}
         </div>
-            <div className="mt-8 text-center">
-                    <Link to="/movies">
-                        <button className="bg-primary hover:bg-green-500 font-bold py-2 px-6 rounded">
-                            Xem thêm
-                        </button>
-                    </Link>
+        {trailerKey && (
+            <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+                <div className="relative w-[80%] h-[80%]">
+                    <button
+                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full px-4 py-2"
+                        onClick={() => setTrailerKey(null)}
+                    >
+                        X
+                    </button>
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src={`https://www.youtube.com/embed/${trailerKey}`}
+                        title="Trailer"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                </div>
             </div>
+        )}
     </div>
   );
 };
