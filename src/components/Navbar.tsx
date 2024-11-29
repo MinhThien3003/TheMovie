@@ -9,9 +9,7 @@ const Navbar: React.FC = () => {
   const [searchActive, setSearchActive] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>(""); // Lưu từ khóa tìm kiếm
   const [movies, setMovies] = useState<any[]>([]); // Lưu kết quả tìm kiếm
-
   const location = useLocation(); // Sử dụng useLocation để theo dõi URL
-
   const handleSearchClick = (): void => {
     // Nếu đang mở tìm kiếm, khi click thì đóng và xóa nội dung trong ô tìm kiếm và kết quả tìm kiếm
     if (searchActive) {

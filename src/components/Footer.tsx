@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div>
                     <h3 className="m-4 text-xl font-bold">Địa Chỉ</h3>
-                    <p className="text-sm font-bold">All in DuckMinh phần này thêm map càng tốt nha báo</p>
+                    <p className="text-sm font-bold">Hỏi Thiện Ngô đi   </p>
                 </div>
             </div>
         </footer>
