@@ -5,6 +5,7 @@ import Banners from './components/Home/Banners';
 import MovieList from './components/Home/MovieList';
 import MovieUpcoming from './components/Home/MovieList-Upcoming';
 import Chitietphim from './components/Chitietphim/chitietphim';
+import Promotions from './components/Home/Promotions';
 
 function App() {
   // console.log("ENV TEST: ", import.meta.env.VITE_API_KEY)
@@ -23,6 +24,7 @@ function App() {
                   <Banners />
                   <MovieList/>
                   <MovieUpcoming/>
+                  <Promotions/>
                 </div>
               }
               />

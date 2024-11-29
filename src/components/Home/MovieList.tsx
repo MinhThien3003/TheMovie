@@ -37,7 +37,7 @@ const MovieList: React.FC = () => {
     }, []);
   return (
     <div className="p-6">
-        <h2 className="text-black text-3xl font-bold text-center mb-8">Phim Đang Chiếu</h2>
+        <h2 className="text-black text-3xl font-bold text-center mb-8">|Phim Đang Chiếu|</h2>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {movies.slice(0, 8).map((movie) => (
                 <div
@@ -74,13 +74,6 @@ const MovieList: React.FC = () => {
                 </div>
             ))}
         </div>
-            <div className="mt-8 text-center">
-                    <Link to="/movies">
-                        <button className="bg-primary hover:bg-blue-600 text-black font-bold py-2 px-4 rounded">
-                            Xem thêm
-                        </button>
-                    </Link>
-            </div>
     </div>
   );
 };
