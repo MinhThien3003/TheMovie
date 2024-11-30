@@ -83,7 +83,7 @@ function Chitietphim() {
             Trailer
           </button>
           <Link
-            to="/book-ticket"
+            to="/booking"
             className="bg-white text-black py-4 px-8 border-4 border-black rounded-lg text-lg mx-4 flex items-center">
             <i className="fa-solid fa-cart-shopping mr-4" />
             Đặt vé

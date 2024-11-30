@@ -5,8 +5,12 @@ import Banners from './components/Home/Banners';
 import MovieList from './components/Home/MovieList';
 import MovieUpcoming from './components/Home/MovieList-Upcoming';
 import Chitietphim from './components/Chitietphim/chitietphim';
+<<<<<<< HEAD
 import Promotions from './components/Home/Promotions';
 
+=======
+import BookingTicket from './components/Home/BookingTicket';
+>>>>>>> d6a20fbf310635da7e3f092998055d24a71b3feb
 function App() {
   // console.log("ENV TEST: ", import.meta.env.VITE_API_KEY)
 
@@ -29,9 +33,9 @@ function App() {
               }
               />
             <Route path="/chitietphim/:id" element={<Chitietphim />} />
+            <Route path="/booking" element={<BookingTicket />} />
           </Routes>
-        </main>
-        
+        </main>       
         <footer>
           <Footer />
         </footer>
